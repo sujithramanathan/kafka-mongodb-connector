@@ -9,6 +9,8 @@ You can build the connector with Maven using the standard lifecycle phases:
 ```
 mvn clean
 mvn package
+```
+
 
 # Mongo Source Connector
 If the connector is running as a Source Connector, it reads data from Mongodb oplog (https://docs.mongodb.org/manual/core/replica-set-oplog/) and publishes it on Kafka as a JSON String.
