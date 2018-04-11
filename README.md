@@ -2,13 +2,13 @@
 This connector is used to connect Mongo DB to kafka (Source) and Kafka to Mongo DB (Sink).
 
 # What's new here ?
-Schema registry is not required to sink data's into Mongo DB.
+Schema registry is not required to sink data's into Mongo DB, We can create separate topic for deleted records from MongoDB to kafka by configuring it in connect-mongo-source.properties.
 
 # Build
 You can build the connector with Maven using the standard lifecycle phases:
 ```
 mvn clean
-mvn package
+mvn install
 ```
 
 
@@ -78,3 +78,12 @@ topics=sink_test
 * **topics**: comma separated list of topics to write on Mongodb
 
 The number of collections and the number of topics should be same.
+
+## Steps to start kafka and kafka connector.
+```ini
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+bin/kafka-server-start.sh config/server.properties
+
+bin/connect-standalone.sh config/connect-standalone.properties config/connect-mongo-sink.properties
+```
